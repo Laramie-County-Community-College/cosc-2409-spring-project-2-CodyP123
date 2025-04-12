@@ -58,7 +58,7 @@ def analyze_log_file(filename="access.log"):
     print(f"Unique IP Addresses: {len(unique_IPs)}")
     print("URL Access Counts:")
     print(f"    /page1: {url_counts['/page1']}")
-    print(f"    /images/logo.png: {url_counts['/images/logo.png: 20']}")
+    print(f"    /images/logo.png: {url_counts['/images/logo.png']}")
     print(f"    /page2: {url_counts['/page2']}")
     print(f"    /page3: {url_counts['/page3']}")
     print(f"    /api/data: {url_counts['/api/data']}")
