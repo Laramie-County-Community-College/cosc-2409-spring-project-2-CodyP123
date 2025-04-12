@@ -37,7 +37,7 @@ def analyze_log_file(filename="access.log"):
             datetimes.append(timestamp)
             if int(status_code) >= 400:
                 error_count += 1
-            unique_ips.add(ip)
+            unique_IPs.add(ip)
             if url in url_counts:
                 url_counts[url] += 1
             else:
@@ -54,7 +54,14 @@ def analyze_log_file(filename="access.log"):
         /page3: 28
         /api/data: 16
     '''
-
+    print(f"Total Errors (4xx and 5xx): {error_count}")
+    print(f"Unique IP Addresses: {len(unique_IPs)}")
+    print("URL Access Counts:")
+    print(f"    /page1: {url_counts['/page1']}")
+    print(f"    /images/logo.png: {url_counts['/images/logo.png: 20']}")
+    print(f"    /page2: {url_counts['/page2']}")
+    print(f"    /page3: {url_counts['/page3']}")
+    print(f"    /api/data: {url_counts['/api/data']}")
 
 def extract_log_data(line):
     #please note that you do not need to edit this function, just the analyze_log_file function above!
