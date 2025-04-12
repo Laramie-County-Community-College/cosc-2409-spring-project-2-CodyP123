@@ -30,7 +30,18 @@ def analyze_log_file(filename="access.log"):
     #     - if the ip is not in your unique_ips set, add it to the set.
     #     - if the url is in your url_counts dictionary, increment the count by 1, otherise add the url to the dictionary with a count of 1.
     #     - if the status code is greater than or equal to 400, increment the error count by 1.
-    
+    for line in log_lines:
+        match = re.search(r"(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}) - (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - \"GET (.+) HTTP/1.1\" (\d+)", line)
+        if match:
+            timestamp, ip, url, status_code = match.groups()
+            datetimes.append(timestamp)
+            if int(status_code) >= 400:
+                error_count += 1
+            unique_ips.add(ip)
+            if url in url_counts:
+                url_counts[url] += 1
+            else:
+                url_counts[url] = 1
 
     # d.  Print out the summary information as shown in the instructions.  It should look like this:
     '''
