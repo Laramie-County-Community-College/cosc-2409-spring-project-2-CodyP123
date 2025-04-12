@@ -13,14 +13,17 @@ def analyze_log_file(filename="access.log"):
     """
 
     try:
-        # open the access.log file and read the lines into a list (ideally named log_lines if you want to use the code from the instruction page)
-        pass  #remove this line when you start coding
+        with open(filename, "r") as f:
+            log_lines = f.readlines()
     except FileNotFoundError:
         print(f"Error: Log file '{filename}' not found.")
         return
 
     # set up variables to store the datetime, error count, unique IPs, and URL counts for the log file.
-
+    datetimes = []
+    error_count = 0
+    unique_IPs = set()
+    url_counts = {}
     # a.  loop through each line in the log file.  This would be the log_lines list if you opened the log the same way as in the instructions.  
     # b.  inside this loop, first extract the log data using the extract_log_data function or the regular expression given in the instructions.
     # c.  if the data is extracted successfully, update the error count, unique IPs, and URL counts.
